@@ -17,6 +17,7 @@
 package com.example.android.trackmysleepquality.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -93,6 +94,7 @@ abstract class SleepDatabase : RoomDatabase() {
                             // https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929
                             .fallbackToDestructiveMigration()
                             .build()
+                    Log.i("SleepDataBase", "create database")
                     // Assign INSTANCE to the newly created database.
                     INSTANCE = instance
                 }
