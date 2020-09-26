@@ -58,6 +58,19 @@ class SleepQualityViewModel(
     /**
      *
      */
+    // variable for infoOfNight
+    val _getInfoIfNightFromEdittext = MutableLiveData<String>()
+
+    private val _infoOfNight = MutableLiveData<String>()
+    val infoOfNight: LiveData<String>
+        get() = _infoOfNight
+
+
+
+    fun getInfomationOfNight(): String {
+        _infoOfNight.value = _getInfoIfNightFromEdittext.value
+        return infoOfNight.value.toString()
+    }
 
     /**
      * Call this immediately after navigating to [SleepTrackerFragment]
@@ -75,6 +88,7 @@ class SleepQualityViewModel(
         viewModelScope.launch {
                 val tonight = database.get(sleepNightKey) ?: return@launch
                 tonight.sleepQuality = quality
+                tonight.infoOfNight = getInfomationOfNight()
                 database.update(tonight)
 
             // Setting this state variable to true will alert the observer and trigger navigation.

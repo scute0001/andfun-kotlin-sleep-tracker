@@ -126,5 +126,23 @@
             app:layout_constraintTop_toTopOf="@+id/quality_four_image"
             app:srcCompat="@drawable/ic_sleep_5" />
 
+        <EditText
+            android:id="@+id/infoOfNightEditext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="Please enter any information of this night!"
+            android:inputType="textPersonName"
+            android:text="@={sleepQualityViewModel._getInfoIfNightFromEdittext}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quality_four_image"
+            app:layout_constraintVertical_bias="0.6" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
