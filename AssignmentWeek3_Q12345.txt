@@ -1,0 +1,69 @@
+﻿1. What is Encapsulation ? Try to list out the benefits of Encapsulation.
+Encapsulation指把相關的Fuctions and properties封裝放在相同的地方，例如 Class。
+
+a.Encapsulation內的 Fuctions and properties 能依需求做細部控制成是否要給外部參照使用(private / public ..)
+也可防止Fuctions or properties被不當使用or參照。
+b.使程式更容易維護，因相同的功能都在同一區塊。
+c.Easy to trace code and to find your want ，提升可讀性 
+
+
+
+2. Try to explain what is enum and why we use them.
+enum，透過enum可把一些程式中常用的常數or字串賦予一個有意義的名稱，並放在相同的class內，用來增加程式的可讀性。 
+
+
+3. How to use enum in Kotlin? Attach a sample code that use enum in Kotlin.
+
+// 下面為判斷成績等級的小程式，因為有定義的enum class並把A_GRADE與分數範圍90~100連結起來，
+// 於是在when判斷式可以用 in ScoreGrade.A_GRADE.score 取代掉 in 90..100 ...etc.，增加成是可讀性
+
+
+enum class ScoreGrade(val score: IntRange) {
+    A_GRADE(90..100),
+    B_GRADE(80..89),
+    C_GRADE(70..79),
+    D_GRADE(60..69),
+    F_GRADE(0..59)
+}
+
+fun main(args: Array<String>) {
+    val yourScore = 60 // key in your score here
+    gradeCheck(yourScore)
+}
+
+fun gradeCheck(inputScore: Int) {
+    when(inputScore) {
+        in ScoreGrade.A_GRADE.score -> println("Your score is $inputScore, and get the ${ScoreGrade.A_GRADE}")
+        in ScoreGrade.B_GRADE.score -> println("Your score is $inputScore, and get the ${ScoreGrade.B_GRADE}")
+        in ScoreGrade.C_GRADE.score -> println("Your score is $inputScore, and get the ${ScoreGrade.C_GRADE}")
+        in ScoreGrade.D_GRADE.score -> println("Your score is $inputScore, and get the ${ScoreGrade.D_GRADE}")
+        else -> println("Your score is $inputScore,and failed the class.")
+    }
+}
+
+
+4. What are the differences between LinearLayout and RelativeLayout ? Try to explain in
+details.
+
+LinearLayout可以讓內部的物件依指定的的方向依序排列，可用orientation指定排列方向為水平or垂直。
+因為一個LinearLayout只能指定一個排列方向，所以在複雜的畫面要layout，LinearLayout常會會變成多層的巢狀結構，
+造成系統在尋找or規劃某個物件時必須一層一層直到找到指定的物件，較吃效能。
+
+RelativeLayout可以讓內部的物件以設定彼此之間的相對關係來決定layout位置，每個物件都必須設定自己的id，
+然後以指定的第一個物件為起點，設定彼此畫面上的相對關係，Ex:android:layout_below="@id/gray"(在id/gray物件的下方)。
+與LinearLayout比起來結構平坦，系統在尋找or規劃物件的速度也較快，缺點為要更改or增減物件時必須很清楚其相對關係的設定。
+
+
+5. Try to explain the benefits of ConstraintLayout . Why you should use it?
+
+ConstraintLayout為透過物件自已本身與其它物件之間的約束來決定它的位置，與RelativeLayout較類似
+做一些較複雜的界面時可以用各種約束來定位自已的位置，所以也屬於平坦結構類型，有較快的效能不過
+比起RelativeLayout，ConstraintLayout更適合在Design模式下使用，且能按照比例約束控制物件位置和
+尺寸，適用在不同機型不同的螢幕大小時減少變形的機會。
+
+
+
+
+
+
+
