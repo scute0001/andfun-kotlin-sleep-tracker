@@ -68,7 +68,7 @@ class SleepQualityViewModel(
 
 
     fun getInfomationOfNight(): String {
-        _infoOfNight.value = _getInfoIfNightFromEdittext.value
+        _infoOfNight.value = _getInfoIfNightFromEdittext.value ?: ""
         return infoOfNight.value.toString()
     }
 
